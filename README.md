@@ -1,2 +1,4 @@
-# ffi
-utils for chez ffi bindings
+# chez-core
+
+chez core extension
+
