@@ -1,7 +1,8 @@
 (library (chezcore base)
   (export
     class-of
-    ->string)
+    ->string
+    try)
   (import (scheme))
   
   (define class-of
@@ -30,4 +31,15 @@
 
   (define (->string x)
     (with-output-to-string (lambda () (display x))))
-)
+    
+  (define-syntax try 
+    (syntax-rules (catch) 
+      ((_ body (catch catcher)) 
+        (call/cc 
+          (lambda (exit) 
+            (with-exception-handler 
+              (lambda (condition) 
+                (catcher condition) 
+                (exit condition)) 
+              (lambda () body)))))))
+  )
