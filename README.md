@@ -1,4 +1,4 @@
-# chez-core
+# chezcore
 
 chez core extension
 
